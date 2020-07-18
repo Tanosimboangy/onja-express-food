@@ -3,6 +3,7 @@ const outerModal = document.querySelector('.outer-modal');
 const innerModal = document.querySelector('.inner-modal');
 
 const openModal = event => {
+	console.log(event);
 	outerModal.classList.add('open');
 	const myHTML = `
 	<form>
@@ -44,23 +45,46 @@ const openModal = event => {
 		<button class="submitOrder" type="submit">Add this order</button>
 	</form>
 `;
-console.log(event);
 	innerModal.innerHTML = myHTML;
-}
-
+};
 addOrder.addEventListener("click", openModal);
 
-const handleEscapeKey = event => {
+const closeModalWithEscapeKey = event => {
 	if (event.key === 'Escape') {
 		outerModal.classList.remove('open');
 	}
-}
-window.addEventListener('keydown', handleEscapeKey);
-
+};
+window.addEventListener('keydown', closeModalWithEscapeKey);
 const closeModal = event => {
-	const outside = !event.target.closest('inner-modal');
+	const outside = !event.target.closest('.inner-modal');
 	if (outside) {
 		outerModal.classList.remove('open');
-	}
-}
+	} 
+};
 outerModal.addEventListener('click', closeModal);
+
+// onst submitOrder = document.querySelector('.submitOrder');
+// const orderList = document.querySelector('.order-list');
+// const name = document.querySelector('.input-form');
+
+// submitOrder.addEventListener('click', (event) => {
+// 	console.log(event);
+// 	const mySecHTML = `
+// 	<div class="order" data-dish="anamaitso" data-size="large" data-amount="5">
+// 		<span class="title">
+// 		${name.value}
+// 		</span>
+// 		<button class="details">Details</button>
+// 		<button class="served">Delete order</button>
+// 	</div>
+// 	`;
+// 	orderList.appendChild(mySecHTML);
+// });c
+
+const order = document.querySelector('.order');
+const deleteButton = document.querySelector('.served');
+
+deleteButton.addEventListener('click', (event) => {
+	console.log(event.target);
+	order.classList.add('delelte');
+});
