@@ -48,13 +48,19 @@ console.log(event);
 	innerModal.innerHTML = myHTML;
 }
 
+addOrder.addEventListener("click", openModal);
+
+const handleEscapeKey = event => {
+	if (event.key === 'Escape') {
+		outerModal.classList.remove('open');
+	}
+}
+window.addEventListener('keydown', handleEscapeKey);
+
 const closeModal = event => {
 	const outside = !event.target.closest('inner-modal');
 	if (outside) {
 		outerModal.classList.remove('open');
 	}
 }
-
 outerModal.addEventListener('click', closeModal);
-
-addOrder.addEventListener("click", openModal);
