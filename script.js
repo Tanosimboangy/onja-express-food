@@ -93,3 +93,19 @@ const deleteButton = document.querySelector('.served');
 deleteButton.addEventListener('click', e => {
 	order.classList.add('delete');
 });
+
+
+const detailsButton = document.querySelector('.details');
+const newModal = event => {
+	console.log(event);
+	outerModal.classList.add('open');
+	const mythiHTML = `
+	<div>
+
+	</div>
+	`;
+
+
+detailsButton.addEventListener('click', (event) => {
+	console.log(event);
+});
