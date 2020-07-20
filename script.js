@@ -1,7 +1,10 @@
+// Access the add order button
 const addOrder = document.querySelector('.add-order');
+// Call the inner and the outer modal
 const outerModal = document.querySelector('.outer-modal');
 const innerModal = document.querySelector('.inner-modal');
 
+// Inserting the html here for the form 
 const openModal = event => {
 	console.log(event);
 	outerModal.classList.add('open');
@@ -49,11 +52,13 @@ const openModal = event => {
 };
 addOrder.addEventListener("click", openModal);
 
+// creating an escaping way by using the escape key
 const closeModalWithEscapeKey = event => {
 	if (event.key === 'Escape') {
 		outerModal.classList.remove('open');
 	}
 };
+// creating an escaping way by using the window
 window.addEventListener('keydown', closeModalWithEscapeKey);
 const closeModal = event => {
 	const outside = !event.target.closest('.inner-modal');
@@ -63,7 +68,7 @@ const closeModal = event => {
 };
 outerModal.addEventListener('click', closeModal);
 
-// onst submitOrder = document.querySelector('.submitOrder');
+// const submitOrder = document.querySelector('.submitOrder');
 // const orderList = document.querySelector('.order-list');
 // const name = document.querySelector('.input-form');
 
@@ -85,6 +90,6 @@ const order = document.querySelector('.order');
 const deleteButton = document.querySelector('.served');
 
 deleteButton.addEventListener('click', (event) => {
-	console.log(event.target);
+	console.log(event);
 	order.classList.add('delelte');
 });
