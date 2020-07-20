@@ -68,27 +68,28 @@ const closeModal = event => {
 };
 outerModal.addEventListener('click', closeModal);
 
-// const submitOrder = document.querySelector('.submitOrder');
-// const orderList = document.querySelector('.order-list');
-// const name = document.querySelector('.input-form');
+// Submitting the input from the user by creating the lists
+const orderList = document.querySelector('.order-list');
+const submitOrder = document.querySelector('.submitOrder');
+window.addEventListener('submit', ($event) => {
+	$event.preventDefault();
+	const formInput = $event.target;
+	const realName = formInput.name.value;
+	if (formInput.matches("form")) {
+			const mySecHTML = `
+			<div class="order" data-dish="anamaitso" data-size="large" data-amount="5">
+				<span class="title">${realName}</span>
+				<button class="details">Details</button>
+				<button class="served">Delete order</button>
+			</div>`;
+			orderList.insertAdjacentHTML('afterbegin', mySecHTML);
+		};
+		console.log($event);
+});
 
-// submitOrder.addEventListener('click', (event) => {
-// 	console.log(event);
-// 	const mySecHTML = `
-// 	<div class="order" data-dish="anamaitso" data-size="large" data-amount="5">
-// 		<span class="title">
-// 		${name.value}
-// 		</span>
-// 		<button class="details">Details</button>
-// 		<button class="served">Delete order</button>
-// 	</div>
-// 	`;
-// 	orderList.appendChild(mySecHTML);
-// });c
-
+// Reacting the delete button
 const order = document.querySelector('.order');
 const deleteButton = document.querySelector('.served');
-deleteButton.addEventListener('click', (event) => {
-	console.log(event);
+deleteButton.addEventListener('click', e => {
 	order.classList.add('delete');
 });
