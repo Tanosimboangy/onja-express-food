@@ -88,8 +88,7 @@ outerModal.addEventListener('click', closeModal);
 
 const order = document.querySelector('.order');
 const deleteButton = document.querySelector('.served');
-
 deleteButton.addEventListener('click', (event) => {
 	console.log(event);
-	order.classList.add('delelte');
+	order.classList.add('delete');
 });
