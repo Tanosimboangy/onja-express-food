@@ -1,10 +1,21 @@
-// Access the add order button
+// const outer = document.querySelector('.outer-modal');
+// const innerModal = document.querySelector('inner-modal');
+// const addOrderBtn = document.querySelector('.button.add-order');
+
+// const addOrder = event => {
+// 	outerModal.classList.add('open');
+// }
+
+// const handleCloseModal = event => {
+// 	const isOutside = !event.target.closest('inner-modal');
+// 	if (outside) {
+// 		outerModal.classList.remove('open');
+// 	}
+// }
+
 const addOrder = document.querySelector('.add-order');
-// Call the inner and the outer modal
 const outerModal = document.querySelector('.outer-modal');
 const innerModal = document.querySelector('.inner-modal');
-
-// Inserting the html here for the form 
 const openModal = event => {
 	console.log(event);
 	outerModal.classList.add('open');
@@ -51,14 +62,11 @@ const openModal = event => {
 	innerModal.innerHTML = myHTML;
 };
 addOrder.addEventListener("click", openModal);
-
-// creating an escaping way by using the escape key
 const closeModalWithEscapeKey = event => {
 	if (event.key === 'Escape') {
 		outerModal.classList.remove('open');
 	}
 };
-// creating an escaping way by using the window
 window.addEventListener('keydown', closeModalWithEscapeKey);
 const closeModal = event => {
 	const outside = !event.target.closest('.inner-modal');
@@ -67,45 +75,42 @@ const closeModal = event => {
 	} 
 };
 outerModal.addEventListener('click', closeModal);
-
-// Submitting the input from the user by creating the lists
 const orderList = document.querySelector('.order-list');
 const submitOrder = document.querySelector('.submitOrder');
 window.addEventListener('submit', ($event) => {
 	$event.preventDefault();
-	const formInput = $event.target;
-	const realName = formInput.name.value;
-	if (formInput.matches("form")) {
+	const form = $event.target;
+	if (form.matches("form")) {
+	const { name, dish, size, amount } = form;
 			const mySecHTML = `
-			<div class="order" data-dish="anamaitso" data-size="large" data-amount="5">
-				<span class="title">${realName}</span>
+			<div class="order" data-dish="${dish.value}" data-size="${size.value}" data-amount="${amount.value}">
+				<span class="title">${name.value}</span>
 				<button class="details">Details</button>
-				<button class="served">Delete order</button>
+				<button class="delete">Delete order</button>
 			</div>`;
 			orderList.insertAdjacentHTML('afterbegin', mySecHTML);
 		};
 		console.log($event);
+		form.reset();
 });
 
-// Reacting the delete button
-const order = document.querySelector('.order');
-const deleteButton = document.querySelector('.served');
-deleteButton.addEventListener('click', e => {
-	order.classList.add('delete');
-});
+// // Reacting the delete button
+// const order = document.querySelector('.order');
+// const deleteButton = document.querySelector('.served');
+// deleteButton.addEventListener('click', e => {
+// 	order.classList.add('delete');
+// });
 
+// const showDetailModal = order => {
+// 	const {dish, size, amount, amount} = order.dataset;
+// 	const name = order.querySelector('.title').textContent;
+// 	const detailHTML = `
+// 		<h4>${name}</h4>
+// 		<h5>Order :</h5>
+// 		<p>${amount} ${size} ${dish}</p>
+// 	`;
+// }
 
-const detailsButton = document.querySelector('.details');
-const newModal = event => {
-	console.log(event);
-	outerModal.classList.add('open');
-	const mythiHTML = `
-	<div>
-
-	</div>
-	`;
-
-
-detailsButton.addEventListener('click', (event) => {
-	console.log(event);
-});
+const handleBtnClick = event => {
+	if (event.target.matches('button.delete'))
+}

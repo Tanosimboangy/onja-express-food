@@ -118,9 +118,11 @@ button.served:hover {
 }
 
 .inner-modal {
-	background-color: white;
+	background-color: orange;
 	min-width: 300px;
 	min-height: 300px;
+	padding: 2rem;
+	border-radius: 5px;
 }
 
 form {
